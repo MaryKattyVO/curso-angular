@@ -1,0 +1,56 @@
+<div>
+    <ul>
+        <li *ngFor="let curso of cursos">{{curso.name}}</li>
+    </ul>
+</div>
+<div class="card">
+    <div class="card-header">
+        {{titulo}}
+    </div>
+    <div>
+        <div *ngIf="cursos && cursos.length > 0" class="card-body">
+            <div class="row filtro">
+                <div class="col-md-2">Filtrar Por:</div>
+                <div class="col-md-6">
+                    <input #filtro type="text" [(ngModel)]="textoFiltro">
+                    <span>{{textoFiltro}}</span>
+                </div>
+            </div>
+            <table class="table">
+                <thead>
+                    <th>Logo</th>
+                    <th>Nombre</th>
+                    <th>Descripción</th>
+                    <th>Fecha de Inicio</th>
+                    <th>Precio</th>
+                    <th>Rating</th>
+                    <th>Acciones</th>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let curso of cursos">
+                        <td>
+                            <img [src]="curso.imgUrl"
+                                [style.width]="anchoImagen"  
+                                [title] = "curso.name" 
+                            >
+                        </td>
+                        <td>{{curso.name}}</td>
+                        <td>{{curso.fechaInicio}}</td>
+                        <td>{{curso.description}}</td>
+                        <td>{{curso.starDate}}</td>
+                        <td>{{curso.price}}</td>
+                        <td>
+                            <ed-course-action [curso]="curso"
+                                              (edit)="onEditCurso($event)"
+                                              (delete)="onDeleteCurso($event)">
+                            </ed-course-action>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div *ngIf="!cursos || cursos.length === 0" class="alert alert-info" role="alert">
+            No existen cursos disponibles. Intente más tarde
+        </div>
+    </div>
+</div>
