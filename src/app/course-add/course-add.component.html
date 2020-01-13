@@ -1,0 +1,60 @@
+<div class="card">
+  <div class="card-header">
+    Nuevo Curso
+  </div>
+  <div class="card-body">
+    <form #formAdd="ngForm">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" id="name" name="name" />
+      </div>
+      <div class="form-group">
+        <label for="fechaInicio">FechaInicio</label>
+        <input
+          type="text"
+          class="form-control"
+          id="fechaInicio"
+          name="fechaInicio"
+        />
+      </div>
+      <div class="form-group">
+        <label for="description">Descripción</label>
+        <input
+          type="text"
+          class="form-control"
+          id="description"
+          name="description"
+        />
+      </div>
+      <div class="form-group">
+        <label for="starDate">StartDate</label>
+        <input type="text" class="form-control" id="starDate" name="starDate" />
+      </div>
+      <div class="form-group">
+        <label for="price">Price</label>
+        <input type="text" class="form-control" id="price" name="price" />
+      </div>
+      <div class="form-group">
+        <label for="imgUrl">ImgUrl</label>
+        <input type="text" class="form-control" id="imgUrl" name="imgUrl" />
+      </div>
+      <div class="form-group form-check">
+        <input
+          type="checkbox"
+          class="form-check-input"
+          id="active"
+          name="active"
+        />
+        <label class="form-check-label" for="activo">Curso activo</label>
+      </div>
+      <button type="submit" class="btn btn-primary">Crear Curso</button>
+    </form>
+  </div>
+  <div>
+    <pre>
+            Form.valid: {{ formAdd.form.valid }}
+            Form.invalid: {{ formAdd.form.invalid }}
+        </pre
+    >
+  </div>
+</div>
