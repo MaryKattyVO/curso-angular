@@ -4,7 +4,7 @@ import { COURSES } from './data/courses';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 
 import { Observable, throwError } from 'rxjs';
-import {catchError} from 'rxjs/operators';
+import { catchError } from 'rxjs/operators';
 
 
 @Injectable({
@@ -31,6 +31,7 @@ export class CoursesService {
       console.log('Error Status: ', error.status);
       console.log('Error', error.error);
     }
+    //cath and rethrow
     return throwError('Hubo un problema al obtener los datos. Intente más tarde');
   }
 }

@@ -3,6 +3,8 @@ import { Curso } from '../curso';
 import { Cursos } from '../cursos';
 import { Router } from '@angular/router';
 import { CoursesService } from '../courses.service';
+import { catchError, tap } from 'rxjs/operators';
+import { of, EMPTY } from 'rxjs';
 
 @Component({
   selector: 'ed-courses-list',
@@ -15,9 +17,11 @@ export class CoursesListComponent implements OnInit, AfterViewInit {
   @ViewChild('filtro',{static: false})
   filtro: ElementRef;
   private _textoFiltro: string = '';
+
   set textoFiltro (t: string){
     console.log('textoFiltro', t);
     this._textoFiltro = t;
+    this.filtrarCursos(t);
     //this.cursos = t? this.filtrarCursos(t): this.cursosService.getCourses();
   }
   get textoFiltro() {
@@ -25,6 +29,8 @@ export class CoursesListComponent implements OnInit, AfterViewInit {
   }
 
   cursos: any[] ;
+  cursosFiltrados: Curso[];
+  mensajeError: string;
   constructor(private router: Router, private cursosService: CoursesService) { 
     
     //this.eliminarCursos();
@@ -32,14 +38,28 @@ export class CoursesListComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     //this.cursos = this.cursosService.getCourses();
+    this.getCursos();
+  }
+  getCursos (){
     this.cursosService.getCursos()
-    .subscribe((cursos: Curso[])=> this.cursos = cursos);
+    .pipe (
+      //tap(cursos => console.log('Cursos', cursos)),
+      catchError(error => {
+        this.mensajeError =  error;
+        return EMPTY;
+      })
+    )
+    .subscribe((cursos: Curso[])=> {
+      this.cursos = cursos
+      this.cursosFiltrados = cursos;
+    });
   }
   ngAfterViewInit(){
     //this.filtro.nativeElement.value = 'Angular';
   }
   filtrarCursos(texto: string){
-    return this.cursos.filter((curso: Curso)=> curso.name.toLocaleLowerCase().indexOf(texto.toLocaleLowerCase()) >=0);
+    this.cursosFiltrados = this.cursos.filter(
+      (curso: Curso) => curso.name.toLocaleLowerCase().indexOf(texto.toLocaleLowerCase()) >= 0);
   }
   eliminarCursos() {
     setTimeout(() => {
