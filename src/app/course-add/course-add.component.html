@@ -6,7 +6,16 @@
     <form #formAdd="ngForm">
       <div class="form-group">
         <label for="name">Name</label>
-        <input type="text" class="form-control" id="name" name="name" />
+        <input 
+            type="text" 
+            class="form-control" 
+            id="name" 
+            name="name"
+            placeholder="Ingrese Nombre" 
+            [(ngModel)]="nombre"
+            #name="ngModel"
+            required
+        />
       </div>
       <div class="form-group">
         <label for="fechaInicio">FechaInicio</label>
@@ -15,6 +24,7 @@
           class="form-control"
           id="fechaInicio"
           name="fechaInicio"
+          placeholder="Ingresar Fecha Inicio"
         />
       </div>
       <div class="form-group">
@@ -24,19 +34,37 @@
           class="form-control"
           id="description"
           name="description"
+          placeholder="Descripción"
         />
       </div>
       <div class="form-group">
         <label for="starDate">StartDate</label>
-        <input type="text" class="form-control" id="starDate" name="starDate" />
+        <input 
+            type="text" 
+            class="form-control" 
+            id="starDate" 
+            name="starDate" 
+            placeholder="starDate"
+        />
       </div>
       <div class="form-group">
         <label for="price">Price</label>
-        <input type="text" class="form-control" id="price" name="price" />
+        <input 
+            type="text" 
+            class="form-control" 
+            id="price" 
+            name="price" 
+            placeholder="Price"
+        />
       </div>
       <div class="form-group">
         <label for="imgUrl">ImgUrl</label>
-        <input type="text" class="form-control" id="imgUrl" name="imgUrl" />
+        <input 
+            type="text" 
+            class="form-control" 
+            id="imgUrl" 
+            name="imgUrl" 
+        />
       </div>
       <div class="form-group form-check">
         <input
@@ -52,9 +80,14 @@
   </div>
   <div>
     <pre>
-            Form.valid: {{ formAdd.form.valid }}
-            Form.invalid: {{ formAdd.form.invalid }}
-        </pre
+        Form.valid: {{ formAdd.form.valid }}
+        Form.invalid: {{ formAdd.form.invalid }}
+        Form.touched: {{ formAdd.form.touched }}
+        Form.untouched: {{ formAdd.form.untouched }} 
+        Form.pristine: {{ formAdd.form.pristine }}
+        Form.dirty: {{ formAdd.form.dirty }}
+       
+    </pre
     >
   </div>
 </div>
