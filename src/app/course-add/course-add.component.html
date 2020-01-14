@@ -5,7 +5,7 @@
   <div class="card-body">
     <form #formAdd="ngForm">
       <div class="form-group">
-        <label for="name">Name</label>
+        <label for="name">Name*</label>
         <input 
             type="text" 
             class="form-control" 
@@ -18,7 +18,7 @@
         />
       </div>
       <div class="form-group">
-        <label for="fechaInicio">FechaInicio</label>
+        <label for="fechaInicio">FechaInicio*</label>
         <input
           type="text"
           class="form-control"
@@ -26,10 +26,11 @@
           name="fechaInicio"
           placeholder="Ingresar Fecha Inicio"
           [(ngModel)]="model.fechaInicio"
+          required
         />
       </div>
       <div class="form-group">
-        <label for="description">Descripción</label>
+        <label for="description">Descripción*</label>
         <input
           type="text"
           class="form-control"
@@ -37,10 +38,12 @@
           name="description"
           placeholder="Descripción"
           [(ngModel)]="model.description"
+          required
+          minlength="5"
         />
       </div>
       <div class="form-group">
-        <label for="starDate">StartDate</label>
+        <label for="starDate">StartDate*</label>
         <input 
             type="text" 
             class="form-control" 
@@ -48,10 +51,11 @@
             name="starDate" 
             placeholder="starDate"
             [(ngModel)]="model.starDate"
+            required
         />
       </div>
       <div class="form-group">
-        <label for="price">Price</label>
+        <label for="price">Price*</label>
         <input 
             type="text" 
             class="form-control" 
@@ -59,6 +63,7 @@
             name="price" 
             placeholder="Price"
             [(ngModel)]="model.price"
+            required
         />
       </div>
       <div class="form-group">
@@ -69,6 +74,7 @@
             id="imgUrl" 
             name="imgUrl" 
             [(ngModel)]="model.imgUrl"
+           
         />
       </div>
       <div class="form-group form-check">
