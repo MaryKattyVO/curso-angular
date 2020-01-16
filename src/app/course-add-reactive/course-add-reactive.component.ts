@@ -16,11 +16,17 @@ export class CourseAddReactiveComponent implements OnInit {
       name: new FormControl(null, Validators.required),
       description: new FormControl(null, [Validators.required, Validators.minLength(4)]),
       price: new FormControl(null, Validators.required),
-      img: new FormControl(null),
+      url: new FormControl(null),
     });
   }
   onSubmit() {
     console.log('Submit', this.courseAddForm);
+  }
+  get price(){
+    return this.courseAddForm.get('price');
+  }
+  get description (){
+    return this.courseAddForm.get('description');
   }
 }
 
