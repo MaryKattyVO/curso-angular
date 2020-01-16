@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -14,6 +14,7 @@ import { CourseActionComponent } from './course-action/course-action.component';
 import { CourseEditComponent } from './course-edit/course-edit.component';
 import { from } from 'rxjs';
 import { CourseAddComponent } from './course-add/course-add.component';
+import { CourseAddReactiveComponent } from './course-add-reactive/course-add-reactive.component';
 
 @NgModule({
   declarations: [
@@ -25,12 +26,14 @@ import { CourseAddComponent } from './course-add/course-add.component';
     CoursesListComponent,
     CourseActionComponent,
     CourseEditComponent,
-    CourseAddComponent
+    CourseAddComponent,
+    CourseAddReactiveComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule
   ],
   providers: [],
