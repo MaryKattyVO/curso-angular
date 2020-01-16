@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'ed-course-add-reactive',
@@ -13,9 +13,9 @@ export class CourseAddReactiveComponent implements OnInit {
 
   ngOnInit() {
     this.courseAddForm = new FormGroup({
-      name: new FormControl('Angular desde 0'),
-      description: new FormControl(null),
-      price: new FormControl(null),
+      name: new FormControl(null, Validators.required),
+      description: new FormControl(null, [Validators.required, Validators.minLength(4)]),
+      price: new FormControl(null, Validators.required),
       img: new FormControl(null),
     });
   }

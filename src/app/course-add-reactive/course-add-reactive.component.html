@@ -6,7 +6,13 @@
       <form [formGroup]="courseAddForm" (ngSubmit)="onSubmit()">
         <div class="form-group">
           <label for="name">Name</label>
-          <input type="text" class="form-control" id="name" name="name" placeholder="Ingrese Nombre" [formControlName]="'name'" 
+          <input 
+              type="text" 
+              class="form-control" 
+              id="name" 
+              name="name"
+              placeholder="Ingrese Nombre"
+              [formControlName]="'name'" 
           />
         </div>
         <div class="form-group">
@@ -42,7 +48,12 @@
           />
         </div>
         <div class="form-group form-check">
-          <input type="checkbox" class="form-check-input" id="active" name="active"/>
+          <input
+            type="checkbox"
+            class="form-check-input"
+            id="active"
+            name="active"
+          />
           <label class="form-check-label" for="active">Curso activo</label>
         </div>
         <button type="submit" 
